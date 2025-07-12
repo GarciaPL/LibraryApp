@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    container_name: libraryapp
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/usr/src/app/app
+      - ./app/db/data:/usr/src/app/app/db/data
