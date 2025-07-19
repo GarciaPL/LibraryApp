@@ -10,20 +10,14 @@ DATABASE_PATH = "db/data/database.db"
 def create_app(test_config=None):
     app = Flask(__name__)
 
-    print("== DEBUG: test_config =", test_config)
-
     if test_config:
-        print("here")
         app.config.update(test_config)
     else:
-        print("here 2")
         basedir = os.path.abspath(os.path.dirname(__file__))
         join_path = os.path.join(basedir, DATABASE_PATH)
         app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + join_path
 
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-    print("USING DB:", app.config["SQLALCHEMY_DATABASE_URI"])
 
     db.init_app(app)
 
